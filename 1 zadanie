@@ -1,0 +1,58 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
+int main()
+{
+    int a, i, j, y;
+    printf("Введите размер матрицы = ");
+    scanf("%d", &a);
+    srand(time(0));
+    if(a%2==1){
+        y = (a-1)/2 + 1;
+    }
+    else {
+        y = a / 2;
+    }
+    int A[a][a];
+    for(i = 0; i < y; i++){
+        for(j = 0; j < y; j++){
+            if(a % 2 == 0){
+                    if(i == 0){
+                    A[i][j] = a;
+                }
+                else {A[i][j] = y - j + y - i;}
+            }
+            else{
+                if(i == 0){
+                    A[i][j] = a;
+                }
+                else {A[i][j] = y - j + y - 1 - i;}
+            }
+        }
+    }
+    for(i = y; i < a; i++){
+        for(j = 0; j < a; j++){
+            A[i][j] = A[a-i-1][j];
+        }
+    }
+    for(i = 0; i < a; i++){
+        for(j = y; j < a; j++){
+            A[i][j] = A[i][a-j-1];
+        }
+    }
+
+
+
+
+
+    for(i = 0; i < a; i++){
+        for(j = 0; j < a; j++){
+            printf("%d ", A[i][j]);
+        }
+        printf("\n");
+    }
+
+
+    return 0;
+}
